@@ -284,3 +284,15 @@
 .widget-actions button { border: 0; background: transparent; color: #40544a; }
 .widget-actions button:active:not(:disabled) { background: #e7f3ec; }
 .spotify-widget { border-color: #e0e8e3 !important; background: #fff !important; color: #1d2c26 !important; }
+
+@media (max-width: 700px) {
+  .display-app:has(.widget-surface) { height: auto; min-height: 100dvh; overflow: auto; align-items: stretch; }
+  .display-app:has(.widget-surface) .device-shell.widget-surface { width: 100%; height: auto; min-height: 100dvh; aspect-ratio: auto; overflow: visible; }
+  .widget-surface .slot-board { position: relative; display: flex; flex-direction: column; gap: 12px; width: 100%; height: auto; margin: 30px 0 16px; overflow: visible; }
+  .widget-surface .slot-board > .animated-slot { position: relative !important; inset: auto !important; flex: 0 0 auto; width: 100% !important; height: 340px; margin: 0 !important; translate: 0 0 !important; transform: none !important; opacity: 1 !important; }
+  .widget-surface .slot-board > .animated-slot:has(.modes-panel) { height: 390px; }
+  .widget-surface .slot-board > .animated-slot:has(.mixer-panel) { height: 420px; }
+  .widget-surface .slot-board > .empty-slot { position: relative; inset: auto; width: 100%; min-height: 72px; flex: 0 0 auto; }
+  .widget-surface .slot-board > .slot-chooser { position: fixed; top: 50%; left: 50% !important; right: auto; bottom: auto; transform: translate(-50%, -50%); width: min(320px, calc(100vw - 32px)); }
+  .widget-surface .widget-toolbar { top: 0; }
+}

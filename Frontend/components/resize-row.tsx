@@ -58,6 +58,14 @@ export function ResizeRow({children,onManage}:{children:ReactNode;onManage:()=>v
     }finally{picking.current=false}
   }
   const [front,raise]=useState<number|null>(null)
+  const [stacked,setStacked]=useState(false)
+  useEffect(()=>{
+    const breakpoint=window.matchMedia('(max-width: 700px)')
+    const sync=()=>setStacked(breakpoint.matches)
+    sync()
+    breakpoint.addEventListener('change',sync)
+    return ()=>breakpoint.removeEventListener('change',sync)
+  },[])
   const nodes=Children.toArray(children)
   const [tiles,set]=useState(initial),[picker,open]=useState<number|null>(null),[preview,show]=useState<Tile|null>(null)
   const [leaving,exit]=useState<Tile[]>([])
@@ -129,8 +137,8 @@ export function ResizeRow({children,onManage}:{children:ReactNode;onManage:()=>v
   function style(t:Tile,removed:boolean){
     const moving=preview?.id===t.id, box=moving?preview:t
     const fade=moving?0:coverage(t.at,t.size)
-    return {left:0,translate:(box.at*100/3)+'cqw 0',width:'calc('+box.size*100/3+'% - 2px)',opacity:removed?0:1-fade*.86,
-      transform:'scale('+(removed?.95:1-fade*.045)+')',zIndex:moving?3:removed?0:t.id===front?2:1,
+    return {left:0,translate:stacked?'0 0':(box.at*100/3)+'cqw 0',width:stacked?'calc(100% - 2px)':'calc('+box.size*100/3+'% - 2px)',opacity:removed?0:stacked?1:1-fade*.86,
+      transform:stacked?'scale(1)':'scale('+(removed?.95:1-fade*.045)+')',order:stacked?box.at:undefined,zIndex:moving?3:removed?0:t.id===front?2:1,
       transition:moving?'none':undefined,pointerEvents:removed?'none' as const:undefined}
   }
   function clear(){if(gesture.current?.dragged)send({preview:null});gesture.current=null;show(null)}
