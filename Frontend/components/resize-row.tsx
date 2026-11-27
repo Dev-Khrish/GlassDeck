@@ -2,7 +2,7 @@
 import { Children, useEffect, useRef, useState, type ReactNode, type PointerEvent } from 'react'
 type Tile={id:number;at:number;size:number}
 const names=['Scenes','Stream chat','Audio mixer','Spotify']
-const initial=names.slice(0,3).map((_,id)=>({id,at:id,size:1}))
+const initial:Tile[]=[{id:0,at:0,size:1},{id:3,at:1,size:1},{id:2,at:2,size:1}]
 const key='centre-three-slots-v1'
 function valid(v:unknown):v is Tile[]{
   if(!Array.isArray(v)||v.length>3)return false
@@ -92,7 +92,7 @@ export function ResizeRow({children,onManage}:{children:ReactNode;onManage:()=>v
       }catch{}finally{busy=false}
     }
     void refresh()
-    const timer=setInterval(refresh,100)
+    const timer=setInterval(refresh,1000)
     return ()=>{stopped=true;clearInterval(timer)}
   },[])
   useEffect(()=>{

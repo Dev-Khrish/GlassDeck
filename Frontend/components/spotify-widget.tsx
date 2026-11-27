@@ -1,6 +1,6 @@
 'use client'
 import { useEffect,useState,useRef, type CSSProperties } from 'react'
-import { Music2, Play, Pause, SkipBack, SkipForward } from 'lucide-react'
+import { Play, Pause, RefreshCw, SkipBack, SkipForward } from 'lucide-react'
 type Track={connected:boolean;title?:string;artist?:string;album?:string;art?:string;playing?:boolean;position?:number;duration?:number;sampledAt?:number}
 function parseLyrics(text:string){
   return text.split(/\r?\n/).flatMap(line=>{
@@ -14,7 +14,7 @@ function timeLabel(seconds:number){
   return Math.floor(n/60)+':'+String(n%60).padStart(2,'0')
 }
 export function SpotifyWidget(){
-  const [track,set]=useState<Track|null>(null),[error,fail]=useState(''),[busy,lock]=useState(false)
+  const [track,set]=useState<Track|null>(null),[error,fail]=useState(''),[busy,lock]=useState(false),[artFailed,setArtFailed]=useState(false)
   const seq=useRef(0),writing=useRef(false)
   async function refresh(action?:string){
     if(writing.current)return
@@ -42,7 +42,7 @@ export function SpotifyWidget(){
   },[storageKey])
   useEffect(()=>{
     setAutomatic({synced:'',plain:'',status:''})
-    if(!lyrics||!track?.title)return
+    if(!lyrics||!track?.connected||!track.title)return
     const controller=new AbortController()
     setAutomatic({synced:'',plain:'',status:'Finding lyrics…'})
     fetch('/api/spotify?view=lyrics',{signal:controller.signal}).then(response=>{
@@ -54,9 +54,9 @@ export function SpotifyWidget(){
       if(!controller.signal.aborted)setAutomatic({synced:'',plain:'',status:'Lyrics service unavailable'})
     })
     return ()=>controller.abort()
-  },[lyrics,song,track?.title])
+  },[lyrics,song,track?.title,track?.connected])
   const displayedLines=lines.length?lines:parseLyrics(automatic.synced)
-  useEffect(()=>{setNow(Date.now());const timer=setInterval(()=>setNow(Date.now()),250);return()=>clearInterval(timer)},[])
+  useEffect(()=>{setNow(Date.now());const timer=setInterval(()=>{if(!document.hidden)setNow(Date.now())},1000);return()=>clearInterval(timer)},[])
   const duration=track?.duration||0
   const position=Math.min(duration||Infinity,Math.max(0,(track?.position||0)+(track?.playing&&track.sampledAt?Math.max(0,now-track.sampledAt)/1000:0)))
   const current=displayedLines.reduce((last,line,i)=>line.time<=position?i:last,-1)
@@ -71,16 +71,20 @@ export function SpotifyWidget(){
     try{localStorage.setItem(storageKey,text)}catch{}
   }
   const art=track?.art
-  const trackTitle=track?.connected?track.title||'Spotify':track?'Waiting for Spotify':'Connecting…'
-  const artist=track?.connected?track.artist:'Play a track on your laptop.'
-  const cover=(className:string)=><div className={className}>{art?<img key={art.slice(-100)} src={art} alt=""/>:<Music2 aria-hidden/>}</div>
-  return <section className={'screen-panel spotify-widget '+(lyrics?'with-lyrics':'poster-mode')} style={art?{'--spotify-cover':'url("'+art+'")'} as CSSProperties:undefined}>
-    <div className="spotify-top"><span><i className="spotify-dot"/>Now playing</span><div className="spotify-switch" role="group" aria-label="Spotify view"><button aria-pressed={lyrics} onClick={()=>toggleLyrics(true)}>Lyrics</button><button aria-pressed={!lyrics} onClick={()=>toggleLyrics(false)}>Music profile</button></div></div>
-    <div className="spotify-compact-track">{cover('spotify-mini-cover')}<div><strong>{trackTitle}</strong><small>{artist}</small></div><span aria-hidden="true" className={'spotify-eq'+(track?.playing?' playing':'')}><i/><i/><i/><i/></span></div>
+  useEffect(()=>setArtFailed(false),[art])
+  const trackTitle=track?.connected?track.title||'Spotify':error?'Spotify is offline':'Waiting for Spotify'
+  const artist=track?.connected?track.artist||'Unknown artist':error?'Open Spotify on the paired laptop to show playback.':'Connect the laptop to show the current track.'
+  const statusLabel=track?.connected?track.playing?'NOW PLAYING':'PAUSED':error?'LAPTOP OFFLINE':'CONNECTING'
+  const statusType=track?.connected?'connected':error?'offline':'connecting'
+  const poster=art&&!artFailed?art:'/spotify-fallback-cover.png'
+  const cover=(className:string,decorative=false)=><div className={className}>{art&&!artFailed?<img key={art.slice(-100)} src={art} alt={decorative?'':`Album artwork for ${trackTitle}`} onError={()=>setArtFailed(true)} decoding="async"/>:<img src="/spotify-fallback-cover.png" alt={decorative?'':'Atmospheric album artwork'} decoding="async"/>}</div>
+  return <section aria-label="Spotify player" data-status={statusType} className={'screen-panel spotify-widget '+(lyrics?'with-lyrics':'poster-mode')} style={{'--spotify-cover':`url("${poster}")`} as CSSProperties}>
+    <div className="spotify-top"><div className="spotify-player-heading"><i className="spotify-dot" aria-hidden="true"/><div className="spotify-heading-copy"><span className="spotify-kicker">GLASSDECK AUDIO</span><strong>Spotify</strong></div><span className="spotify-status-label" aria-live="polite">{statusLabel}</span></div><div className="spotify-top-actions"><div className="spotify-switch" role="group" aria-label="Spotify view"><button aria-pressed={lyrics} onClick={()=>toggleLyrics(true)}>Lyrics</button><button aria-pressed={!lyrics} onClick={()=>toggleLyrics(false)}>Music profile</button></div><button className="spotify-refresh" aria-label="Refresh Spotify status" onClick={()=>void refresh()}><RefreshCw /></button></div></div>
+    <div className="spotify-compact-track">{cover('spotify-mini-cover',true)}<div><strong>{trackTitle}</strong><small>{artist}</small></div><span aria-hidden="true" className={'spotify-eq'+(track?.playing?' playing':'')}><i/><i/><i/><i/></span></div>
     <div className="spotify-composition" key={lyrics?'lyrics':'poster'}>
       <div className="spotify-player">
         {cover('spotify-art')}
-        <div className="spotify-info"><h2>{trackTitle}</h2><p>{artist}</p>{track?.album&&<small>{track.album}</small>}</div>
+        <div className="spotify-info"><h2>{trackTitle}</h2><p>{artist}</p>{track?.connected&&track.album&&<small>{track.album}</small>}</div>
         <div className="spotify-transport">
           {duration>0&&<div className="spotify-timeline"><span>{timeLabel(position)}</span><progress aria-label="Playback progress" value={position} max={duration}/><span>{timeLabel(duration)}</span></div>}
           <div className="spotify-controls">
@@ -92,7 +96,7 @@ export function SpotifyWidget(){
         </div>
       </div>
       {lyrics&&<div className="spotify-lyrics">
-        {displayedLines.length?<div className="spotify-lines">{displayedLines.map((line,i)=><p key={i} ref={i===current?activeLine:null} data-current={i===current}>{line.words}</p>)}</div>:automatic.plain?<div className="spotify-lines" style={{whiteSpace:"pre-line"}}>{automatic.plain}</div>:<p role="status">{track?.title?automatic.status:"Play a track to see lyrics."}</p>}
+        {displayedLines.length?<div className="spotify-lines">{displayedLines.map((line,i)=><p key={i} ref={i===current?activeLine:null} data-current={i===current}>{line.words}</p>)}</div>:automatic.plain?<div className="spotify-lines" style={{whiteSpace:"pre-line"}}>{automatic.plain}</div>:<p role="status">{track?.connected?automatic.status||'No lyrics found for this track.':error?'Connect Spotify on the paired laptop to load lyrics.':'Waiting for Spotify on the paired laptop.'}</p>}
         {editing?<div className="spotify-lyric-editor">
           <textarea aria-label="Timed lyrics" placeholder="[00:12.00] Paste timed lyrics" value={draft} maxLength={262144} onChange={e=>setDraft(e.target.value)}/>
           <button onClick={()=>saveLyrics(draft)}>Save</button> <button onClick={()=>edit(false)}>Cancel</button>
