@@ -1,0 +1,9 @@
+{
+  "id": "stream-chat",
+  "name": "haha chat",
+  "description": "Live messages from your stream",
+  "icon": "Radio",
+  "color": "purple",
+  "enabled": true,
+  "order": 0
+}

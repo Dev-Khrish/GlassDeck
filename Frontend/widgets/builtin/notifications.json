@@ -1,0 +1,9 @@
+{
+  "id": "notifications",
+  "name": "Notifications",
+  "description": "Stay on top of new activity",
+  "icon": "Bell",
+  "color": "green",
+  "enabled": true,
+  "order": 7
+}

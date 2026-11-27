@@ -1,0 +1,9 @@
+{
+  "id": "countdown",
+  "name": "Countdown",
+  "description": "A timer for your next scene",
+  "icon": "Clock3",
+  "color": "yellow",
+  "enabled": false,
+  "order": 6
+}

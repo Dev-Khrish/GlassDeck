@@ -1,0 +1,9 @@
+{
+  "id": "now-playing",
+  "name": "Now playing",
+  "description": "Music and playback controls",
+  "icon": "Music2",
+  "color": "orange",
+  "enabled": true,
+  "order": 1
+}

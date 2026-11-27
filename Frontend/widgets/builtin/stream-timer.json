@@ -1,0 +1,9 @@
+{
+  "id": "stream-timer",
+  "name": "Stream timer",
+  "description": "Time live and stream status",
+  "icon": "Activity",
+  "color": "amber",
+  "enabled": true,
+  "order": 4
+}

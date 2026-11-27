@@ -1,0 +1,9 @@
+{
+  "id": "friends-map",
+  "name": "Friends map",
+  "description": "See where your crew is playing",
+  "icon": "Sparkles",
+  "color": "pink",
+  "enabled": false,
+  "order": 5
+}

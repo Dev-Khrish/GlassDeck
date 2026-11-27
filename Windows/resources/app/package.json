@@ -1,0 +1,9 @@
+{
+  "name": "glassdeck",
+  "productName": "GlassDeck",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A local Windows dashboard editor and synchronized Android display.",
+  "main": "windows/main.cjs",
+  "scripts": { "check": "node --check server.cjs && node --check windows/main.cjs && node --check web/app.js" }
+}

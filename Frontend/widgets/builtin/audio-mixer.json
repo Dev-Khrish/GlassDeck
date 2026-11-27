@@ -1,0 +1,9 @@
+{
+  "id": "audio-mixer",
+  "name": "Audio mixer",
+  "description": "Levels for every channel",
+  "icon": "SlidersHorizontal",
+  "color": "blue",
+  "enabled": true,
+  "order": 3
+}

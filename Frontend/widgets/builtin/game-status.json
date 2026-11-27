@@ -1,0 +1,9 @@
+{
+  "id": "game-status",
+  "name": "Game status",
+  "description": "Your game, always in context",
+  "icon": "Gamepad2",
+  "color": "mint",
+  "enabled": true,
+  "order": 2
+}

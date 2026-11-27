@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pair GlassDeck</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/connect.js" defer></script>
+</head>
+<body class="connect-page">
+  <main class="connect-box">
+    <h1>GlassDeck</h1>
+    <p>Open Pair tablet on Windows and enter the six-digit code here.</p>
+    <form id="connect-form" action="/connect" method="post">
+      <label for="connect-code">Pairing code</label>
+      <input id="connect-code" name="code" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="one-time-code" required>
+      <button class="button primary" type="submit">Connect</button>
+      <p id="connect-result" role="status" hidden></p>
+    </form>
+  </main>
+</body>
+</html>
