@@ -1,0 +1,9 @@
+{
+  "id": "games-launcher",
+  "name": "Game launcher",
+  "description": "Show installed games and launch them from the deck.",
+  "icon": "Gamepad2",
+  "color": "mint",
+  "enabled": false,
+  "order": 19
+}

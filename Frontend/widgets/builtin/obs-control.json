@@ -1,0 +1,9 @@
+{
+  "id": "obs-control",
+  "name": "OBS control",
+  "description": "Scenes, stream state, recording, and replay buffer controls.",
+  "icon": "Radio",
+  "color": "orange",
+  "enabled": false,
+  "order": 11
+}

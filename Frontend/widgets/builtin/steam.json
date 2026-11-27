@@ -1,0 +1,9 @@
+{
+  "id": "steam",
+  "name": "Steam",
+  "description": "Steam library shortcuts, downloads, and friend activity.",
+  "icon": "Gamepad2",
+  "color": "blue",
+  "enabled": false,
+  "order": 20
+}

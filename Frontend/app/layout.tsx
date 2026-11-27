@@ -4,7 +4,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'GlassDeck — Control Centre',
-  description: 'A calm, customizable control surface for streaming, audio, scenes, and music.',
+  description: 'A customizable Windows companion dashboard for widgets, streaming, audio, music, and your extended display.',
   generator: 'v0.app',
   icons: {
     icon: [

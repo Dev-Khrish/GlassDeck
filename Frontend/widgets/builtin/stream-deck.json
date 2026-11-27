@@ -1,0 +1,9 @@
+{
+  "id": "stream-deck",
+  "name": "Stream Deck",
+  "description": "A 4 × 3 grid of customizable actions and scene shortcuts.",
+  "icon": "LayoutGrid",
+  "color": "mint",
+  "enabled": false,
+  "order": 9
+}

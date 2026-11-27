@@ -1,0 +1,9 @@
+{
+  "id": "notification-studio",
+  "name": "Notification studio",
+  "description": "Choose app-open and event notification layouts and motion.",
+  "icon": "Bell",
+  "color": "purple",
+  "enabled": false,
+  "order": 23
+}

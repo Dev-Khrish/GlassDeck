@@ -1,0 +1,9 @@
+{
+  "id": "soundboard",
+  "name": "Soundboard",
+  "description": "A pad for organizing and triggering your sound effects.",
+  "icon": "AudioLines",
+  "color": "yellow",
+  "enabled": false,
+  "order": 14
+}

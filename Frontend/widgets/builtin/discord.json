@@ -1,0 +1,9 @@
+{
+  "id": "discord",
+  "name": "Discord",
+  "description": "Voice presence, notifications, and recent conversations.",
+  "icon": "Headphones",
+  "color": "purple",
+  "enabled": false,
+  "order": 18
+}

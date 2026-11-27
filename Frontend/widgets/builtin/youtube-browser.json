@@ -1,0 +1,9 @@
+{
+  "id": "youtube-browser",
+  "name": "YouTube",
+  "description": "Browse videos and watch them in a compact player.",
+  "icon": "Play",
+  "color": "red",
+  "enabled": false,
+  "order": 16
+}

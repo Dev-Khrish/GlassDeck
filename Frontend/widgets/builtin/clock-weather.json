@@ -1,0 +1,9 @@
+{
+  "id": "clock-weather",
+  "name": "Clock & weather",
+  "description": "A customizable local clock, date, and forecast tile.",
+  "icon": "Clock3",
+  "color": "blue",
+  "enabled": false,
+  "order": 17
+}

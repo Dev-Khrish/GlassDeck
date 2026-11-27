@@ -1,0 +1,9 @@
+{
+  "id": "twitch-live",
+  "name": "Twitch Live",
+  "description": "Live chat, viewers, stream health, and recent activity.",
+  "icon": "Radio",
+  "color": "purple",
+  "enabled": false,
+  "order": 13
+}

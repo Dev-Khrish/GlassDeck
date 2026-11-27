@@ -1,0 +1,9 @@
+{
+  "id": "extended-display",
+  "name": "Extended display",
+  "description": "A clean full-screen layout for a secondary Windows display.",
+  "icon": "MonitorPlay",
+  "color": "green",
+  "enabled": false,
+  "order": 24
+}

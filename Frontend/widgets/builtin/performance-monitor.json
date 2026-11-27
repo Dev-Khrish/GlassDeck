@@ -1,0 +1,9 @@
+{
+  "id": "performance-monitor",
+  "name": "Machine stats",
+  "description": "CPU, memory, GPU, temperature, and network at a glance.",
+  "icon": "Activity",
+  "color": "orange",
+  "enabled": false,
+  "order": 22
+}

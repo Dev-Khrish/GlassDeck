@@ -1,0 +1,9 @@
+{
+  "id": "whatsapp",
+  "name": "WhatsApp",
+  "description": "A glanceable conversation and notification surface.",
+  "icon": "MessageCircle",
+  "color": "green",
+  "enabled": false,
+  "order": 21
+}

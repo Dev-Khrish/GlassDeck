@@ -1,0 +1,9 @@
+{
+  "id": "video-player",
+  "name": "Video player",
+  "description": "Play a local clip or keep a video beside your controls.",
+  "icon": "MonitorPlay",
+  "color": "blue",
+  "enabled": false,
+  "order": 10
+}

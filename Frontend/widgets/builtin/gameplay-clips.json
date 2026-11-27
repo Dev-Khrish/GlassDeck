@@ -1,0 +1,9 @@
+{
+  "id": "gameplay-clips",
+  "name": "Gameplay clips",
+  "description": "Save the last 30 seconds and browse recent recordings.",
+  "icon": "RotateCcw",
+  "color": "orange",
+  "enabled": false,
+  "order": 15
+}

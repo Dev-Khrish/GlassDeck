@@ -1,0 +1,9 @@
+{
+  "id": "youtube-live",
+  "name": "YouTube Live",
+  "description": "Live chat, viewers, stream health, and recent activity.",
+  "icon": "Radio",
+  "color": "red",
+  "enabled": false,
+  "order": 12
+}
