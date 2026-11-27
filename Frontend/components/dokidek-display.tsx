@@ -73,7 +73,7 @@ const Catalog = createContext<Widget[]>([])
 
 
 function Brand() {
-  return <div className="display-brand"><span className="display-brand-symbol" aria-hidden="true"><i /><i /><i /></span><span>DOKIDEK</span></div>
+  return <div className="display-brand"><span className="display-brand-symbol" aria-hidden="true"><i /><i /><i /></span><span>GLASSDECK</span></div>
 }
 
 function SceneCard({ scene, selected, onSelect }: { scene: Scene; selected: boolean; onSelect: () => void }) {

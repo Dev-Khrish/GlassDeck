@@ -3,8 +3,8 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'DokiDek — Control Centre',
-  description: 'Your stream, scenes, widgets, chat, and audio mixer in one display.',
+  title: 'GlassDeck — Control Centre',
+  description: 'A calm, customizable control surface for streaming, audio, scenes, and music.',
   generator: 'v0.app',
   icons: {
     icon: [
@@ -26,8 +26,8 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  colorScheme: 'dark',
-  themeColor: '#080a0e',
+  colorScheme: 'light',
+  themeColor: '#f1f4f2',
 }
 
 export default function RootLayout({

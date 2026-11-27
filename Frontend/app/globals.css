@@ -89,3 +89,168 @@ button,input{font:inherit}button{color:inherit}button:focus-visible,a:focus-visi
 @media(min-width:1101px){.overview-strip,.main-panels,.bottom-widgets{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr)}}
 
 .tablet-viewport{position:fixed;inset:0;overflow:hidden;background:#000}.tablet-canvas{position:absolute;left:50%;top:50%;width:1280px;height:800px;overflow:hidden}.tablet-canvas .display-app,.tablet-canvas .device-shell{height:100%;min-height:0;width:100%;padding:0;aspect-ratio:auto}.tablet-canvas .display-app{overflow:hidden}.tablet-canvas .control-view{min-height:0}.tablet-canvas .alternate-view{overflow:auto}
+
+:root {
+  color-scheme: light;
+  --background: #f1f4f2;
+  --foreground: #17211e;
+  --card: #ffffff;
+  --card-foreground: #17211e;
+  --popover: #ffffff;
+  --popover-foreground: #17211e;
+  --primary: #117a62;
+  --primary-foreground: #ffffff;
+  --secondary: #e9efec;
+  --secondary-foreground: #24342e;
+  --muted: #edf1ef;
+  --muted-foreground: #66736d;
+  --accent: #e4f2ed;
+  --accent-foreground: #176d58;
+  --destructive: #b84245;
+  --border: #dce4e0;
+  --input: #d6dfdb;
+  --ring: #19846a;
+  --radius: 0.75rem;
+}
+
+html, body { background: #f1f4f2; color: #17211e; }
+body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline-color: #16836a; }
+::selection { background: #c4e9dc; color: #17332a; }
+.display-app { background: radial-gradient(ellipse at 50% -24%, #ffffff 0, transparent 58%), #eef2ef; }
+.device-shell { border-color: #d7e0dc; background: #f8faf9; box-shadow: 0 28px 80px rgba(35, 57, 47, .12), inset 0 1px 0 #fff; }
+.device-shell:before { background: linear-gradient(112deg, #ffffff8a, transparent 27%, transparent 75%, #edf3f0); }
+.display-header, .display-tabs, .display-footer { border-color: #e2e8e5; }
+.display-brand { color: #1d2c26; }
+.display-brand-symbol i:nth-child(1) { background: #1d2c26; }
+.display-brand-symbol i:nth-child(2) { background: #15836a; }
+.display-brand-symbol i:nth-child(3) { background: #98b8ac; }
+.connection-status, .header-device-name, .header-clock, .display-footer, .footer-center, .help-button { color: #74817b; }
+.connection-status { color: #397b63; }
+.connection-status i, .footer-online-dot { background: #27936d; box-shadow: 0 0 0 3px #27936d1c; }
+.header-separator, .footer-center i { background: #dce4e0; }
+.user-badge { border-color: #d9e2dd; background: #eaf1ed; color: #38634f; }
+.header-icon, .plain-icon { color: #718078; }
+.header-icon:hover, .plain-icon:hover { color: #1e3229; background: #edf3f0; }
+.display-tab { color: #77837d; }
+.display-tab:hover, .display-tab.tab-active { color: #1b3027; }
+.display-tab.tab-active:after { background: #16836a; box-shadow: none; }
+.tab-count { border-color: #cfe5da; background: #e9f5ef; color: #287352; }
+.display-mode { color: #64736b; }
+.mode-indicator { background: #23956e; box-shadow: none; }
+.screen-panel, .tablet-centre .screen-panel:not(.spotify-widget) { border-color: #e1e8e4; border-radius: 12px; background: #fff; box-shadow: 0 8px 28px #2845390a, inset 0 1px 0 #fff; }
+.panel-heading h2, .stream-panel h2, .alternate-heading h2 { color: #1b2923; }
+.micro-label, .stat-caption, .channel-copy span, .track-details>span, .track-times, .bottom-widget-copy>span:last-child, .alternate-heading p { color: #75817b; }
+.stream-panel, .now-playing-panel, .mic-panel, .modes-panel, .chat-panel, .mixer-panel { background: #fff; }
+.obs-mark, .mode-icon, .channel-icon, .widget-library-icon, .bottom-widget-icon, .quality-icon { background: #edf5f1; color: #39785f; }
+.connected-badge { border-color: #cfe7d9; background: #eef8f2; color: #32724d; }
+.stream-stat>strong, .track-details>strong, .channel-copy strong, .bottom-widget-copy strong, .widget-library-card h3 { color: #1d2c26; }
+.stream-bottom, .chat-toolbar, .mixer-footer { border-color: #e7ece9; color: #75817b; }
+.stream-bottom strong { color: #35473f; }
+.stream-wave i { background: linear-gradient(0deg, #c1e8d7, #399879); }
+.mode-card, .bottom-widget, .widget-library-card { border-color: #e3e9e6; border-radius: 10px; background: #fbfcfb; box-shadow: 0 2px 8px #294a3b08; }
+.mode-card:hover, .widget-library-card:hover { border-color: #b7d5c8; background: #fff; box-shadow: 0 8px 20px #294a3b12; }
+.mode-card-active, .widget-library-active { border-color: #91cbb1; background: #f0f8f4; box-shadow: inset 0 0 0 1px #dcefe5; }
+.mode-name { color: #25362e; }
+.mode-detail, .widget-library-card p { color: #718078; }
+.active-signal, .widget-card-bottom { color: #387653; }
+.scene-count { border-color: #e0e7e3; color: #6d7a73; }
+.chat-heading-dot { background: #8264bb; box-shadow: 0 0 0 3px #8264bb18; }
+.viewer-count, .chat-toolbar, .chat-actions .plain-icon { color: #78847e; }
+.chat-toolbar>span:first-child { color: #347653; }
+.chat-text { color: #43524b; }
+.user-green { color: #28734f; } .user-amber { color: #8a6824; } .user-blue { color: #3c6da0; }
+.user-orange { color: #9a5c35; } .user-pink { color: #96527b; } .user-purple { color: #6e57a0; }
+.chat-composer { border-color: #dce5e0; background: #f8faf9; }
+.chat-composer:focus-within { border-color: #71b49a; }
+.chat-composer input { color: #24342d; }
+.chat-composer input::placeholder { color: #89958f; }
+.chat-composer button { color: #39785f; }
+.level-bars i, .mic-meter i { background: #e7eeea; }
+.level-bars .bar-on { background: #59a982; }
+.bars-blue .bar-on { background: #7e9bc8; } .bars-orange .bar-on { background: #d49a67; }
+.bars-yellow .bar-on { background: #c8ae59; } .bars-master .bar-on { background: #58a982; }
+.channel-value { color: #66756d; }
+.subtle-button, .scene-arrow { border-color: #dce5e0; background: #fff; color: #53635a; }
+.subtle-button:hover, .scene-arrow:hover { border-color: #9fc8b5; background: #f0f7f3; color: #23684f; }
+.switch { border-color: #cbd7d1; background: #e7ece9; }
+.switch i { background: #8c9992; }
+.switch.switch-on { border-color: #21835f; background: #21835f; }
+.scene-feature-art, .scene-art-blue, .scene-art-amber, .scene-art-orange, .scene-art-yellow, .scene-art-green { border-color: #dfe8e3; background: radial-gradient(ellipse at 75% 50%, #e7f2ec, transparent 44%), linear-gradient(135deg, #f9fbfa, #eef3f0); }
+.scene-ambient { background: #cae5d6; opacity: .55; }
+.scene-preview-window { border-color: #d9e5de; background: #fff; box-shadow: 0 18px 44px #27473715; }
+.scene-preview-window, .scene-preview-window strong { color: #25362e; }
+.scene-preview-window span, .scene-preview-window .preview-topline { color: #75837b; }
+.scene-feature-caption h3 { color: #203229; }
+.scene-feature-caption p { color: #66756d; }
+.scene-pager button { background: #c9d7cf; }
+.scene-pager button.pager-active { background: #21835f; }
+.library-hero { border-color: #e0e7e3; background: radial-gradient(ellipse at 35% 65%, #e6f0eb, transparent 45%), linear-gradient(140deg, #f8faf9, #edf2ef); }
+.library-device { border-color: #d7e2dc; background: linear-gradient(145deg, #fff, #f1f5f2); box-shadow: 0 18px 40px #27473718; }
+.library-device-top, .library-device-bottom, .library-copy, .library-list { color: #43544b; }
+.settings-popover { border-color: #dce5e0; background: #fff; box-shadow: 0 16px 42px #23392d20; }
+.settings-popover-head, .settings-popover>button { border-color: #e6ece8; color: #5b6c63; }
+.settings-popover>button:hover { color: #176d58; background: #f6faf7; }
+.settings-popover>button span:first-child svg { color: #348366; }
+.display-toast { border-color: #cce5d7; background: #f2faf5; color: #286747; box-shadow: 0 10px 28px #21392d16; }
+.toast-check { background: #d7efe1; color: #276746; }
+.display-footer { border-color: #e2e8e5; }
+.footer-center span:first-child { color: #59685f; }
+.footer-center em { color: #287956; }
+.help-button:hover { color: #1e3429; }
+.spotify-widget { border-color: #dfe7e3 !important; background: #fff !important; color: #1d2c26 !important; }
+.widget-surface .panel-heading h2 { font-size: clamp(15px, 1vw, 20px); }
+.widget-surface .micro-label, .widget-surface .stat-caption { font-size: clamp(8px, .55vw, 10px); }
+.widget-surface .mode-grid { gap: clamp(9px, .8vw, 14px); margin-top: clamp(16px, 1.2vw, 24px); }
+.widget-surface .mode-card { min-height: clamp(92px, 7vw, 132px); padding: clamp(11px, .9vw, 16px); }
+.widget-surface .mode-icon { width: clamp(28px, 2.2vw, 38px); height: clamp(28px, 2.2vw, 38px); }
+.widget-surface .mode-name { font-size: clamp(12px, .8vw, 15px); }
+.widget-surface .mode-detail { font-size: clamp(10px, .62vw, 12px); }
+.widget-surface .active-signal { font-size: 8px; }
+.widget-surface .scene-count { font-size: 10px; }
+.widget-surface .channel-copy strong { font-size: clamp(11px, .72vw, 14px); }
+.widget-surface .channel-copy span, .widget-surface .channel-value { font-size: clamp(9px, .58vw, 11px); }
+.widget-surface .mixer-channel { gap: clamp(9px, .8vw, 14px); }
+.widget-surface .spotify-heading-copy strong { font-size: clamp(14px, .9vw, 17px); }
+.widget-surface .spotify-status-label { font-size: 9px; }
+.widget-surface .spotify-info h2 { font-size: clamp(20px, 1.5vw, 30px); }
+.widget-surface .spotify-info p, .widget-surface .spotify-info small { font-size: clamp(12px, .78vw, 15px); }
+.widget-surface .spotify-top { padding-inline: clamp(10px, 1vw, 18px); }
+.widget-surface .spotify-controls button { width: 44px; height: 44px; }
+.widget-surface .spotify-controls button:nth-child(2) { width: 48px; height: 48px; }
+.widget-surface .spotify-timeline, .widget-surface .spotify-player small { font-size: 11px; }
+.widget-surface .stream-stat>strong { font-size: clamp(20px, 1.5vw, 28px); }
+.widget-surface .stream-bottom, .widget-surface .mixer-footer { font-size: 10px; }
+.widget-surface .chat-text, .widget-surface .chat-user { font-size: clamp(10px, .66vw, 13px); }
+.widget-surface .chat-toolbar { font-size: 9px; }
+.widget-surface .chat-composer input { font-size: 12px; }
+.spotify-widget.poster-mode::before, .spotify-widget.poster-mode::after { display: none; }
+.spotify-widget .spotify-heading-copy strong, .spotify-widget .spotify-info h2 { color: #1d2c26; }
+.spotify-widget .spotify-kicker { color: #738179; }
+.spotify-widget .spotify-status-label { border-color: #dce7e1; background: #f4f8f6; color: #52635a; }
+.spotify-widget[data-status="connected"] .spotify-status-label { border-color: #c9e6d5; background: #edf8f1; color: #2f754d; }
+.spotify-widget[data-status="offline"] .spotify-status-label { border-color: #f0ddc5; background: #fff7ec; color: #8a5d29; }
+.spotify-top-actions .spotify-switch { border-color: #e0e8e3; background: #f5f8f6; }
+.spotify-switch button { color: #68776f; }
+.spotify-switch button[aria-pressed=true] { border-color: #d1e7da; background: #e7f3ec; color: #246c4d; box-shadow: none; }
+.spotify-refresh, .spotify-top button, .spotify-lyrics-file { border-color: #dce5e0; background: #f7f9f8; color: #52645a; }
+.spotify-widget .spotify-art { border-color: #e6ece8; box-shadow: 0 12px 30px #223a2d18; }
+.spotify-widget .spotify-lyrics { border-color: #e6ece8; background: #f8faf9; }
+.spotify-widget .spotify-lines p { color: #87938d; }
+.spotify-widget .spotify-lines p[data-current=true] { color: #1d382c; text-shadow: none; }
+.spotify-widget .spotify-info p, .spotify-widget .spotify-info small, .spotify-compact-track small { color: #6f7e75; }
+.spotify-widget .spotify-controls button { border: 1px solid #e1e8e4; background: #f4f7f5; color: #53645b; }
+.spotify-widget .spotify-controls button:nth-child(2) { border-color: #177a5d; background: #177a5d; color: #fff; }
+.spotify-widget .spotify-controls button:disabled { color: #9ba69f; }
+.spotify-widget .spotify-timeline progress { accent-color: #188060; }
+.spotify-widget .spotify-eq i { background: #238865; }
+.spotify-widget .spotify-mini-cover { background: #eef4f0; }
+.spotify-lyric-editor textarea, .spotify-settings select, .touch-settings input, .touch-settings select { border: 1px solid #d9e3dd; border-radius: 6px; background: #fff; color: #20342b; }
+@media (max-width: 700px) {
+  .device-shell { background: #f8faf9; }
+  .screen-panel, .tablet-centre .screen-panel:not(.spotify-widget) { border-radius: 11px; }
+  .spotify-widget .spotify-top { min-height: 42px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; }
+}

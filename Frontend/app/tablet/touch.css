@@ -247,3 +247,40 @@
 .tablet-centre .spotify-status-label{font-size:8px}
 @media(max-width:900px){.spotify-status-label,.spotify-kicker{display:none}.spotify-top{gap:5px;padding-inline:4px}.spotify-player-heading{gap:5px}.spotify-top-actions{gap:4px}.spotify-switch button{min-height:32px;padding-inline:5px;font-size:9px}.spotify-refresh{width:32px;height:32px;min-height:32px}}
 @media(prefers-reduced-motion:reduce){.spotify-widget[data-status="connecting"] .spotify-dot,.spotify-art img,.spotify-mini-cover img{animation:none}.spotify-refresh{transition:none}}
+
+.touch-board { background: #f0f3f1; color: #1c2a23; }
+.touch-pane { border-color: #dbe5df !important; border-radius: 14px; background: #fff; box-shadow: 0 10px 28px #263c3012; }
+.touch-pane header { color: #24372e; }
+.touch-pane header b { color: #276c50 !important; }
+.touch-board button { border: 1px solid #dce6e0; background: #f6f9f7; color: #33483d; cursor: pointer; transition: background .16s, border-color .16s, transform .16s; }
+.touch-board button:hover { border-color: #b7d5c7; background: #edf6f1; }
+.touch-board button:active { transform: scale(.98); }
+.touch-content { color: #26372f; }
+.touch-content .digits { color: #1c3227; }
+.touch-content p { color: #5c6c63; }
+.touch-levels label { color: #45584d; }
+.touch-levels input { accent-color: #188060; }
+.touch-board .touch-grip { border-color: #d6e1da; background: #edf3ef; color: #56675d; }
+.touch-shade { background: #27382d45; backdrop-filter: blur(4px); }
+.touch-settings { border: 1px solid #dce6e0; border-radius: 16px; background: #fff; color: #20332a; box-shadow: 0 20px 60px #1e352a24; }
+.touch-settings h2 { margin-top: 0; color: #1e3328; }
+.touch-settings label { color: #52645a; }
+.touch-settings input[type="color"] { padding: 2px; }
+.centre-grab { border-color: #d9e4dd; background: #f1f6f3; color: #52675b; }
+.corner-line { color: #718279; }
+.corner-line::after { border-color: #87978d; }
+.empty-slot { border-color: #bfd0c5; background: #f7faf8; color: #52715f; }
+.slot-preview { border-color: #55a77e; background: #d9eee2a8; }
+.slot-chooser { border-color: #dbe5df; background: #fff; box-shadow: 0 14px 34px #1e352a1c; }
+.slot-chooser button { border-color: #e2e9e5; background: #f6f9f7; color: #30473a; }
+.widget-surface .animated-slot { border: 1px solid #dce5e0; background: #fff; box-shadow: 0 8px 25px #263c3010; }
+.widget-surface .animated-slot > .screen-panel { border-color: #e0e8e3; background: #fff; }
+.widget-handle i { background: #a7b8ae; box-shadow: 0 0 0 4px #fff; }
+.widget-handle:active i { background: #168060; }
+.widget-surface .corner-line::after { background: #d3dfd8; }
+.widget-surface .corner-line::before, .widget-surface .corner-line::after { color: #788a7f; }
+.widget-surface .corner-line:is(:active,:focus-visible)::before, .widget-surface .corner-line:is(:active,:focus-visible)::after { background: #188060; }
+.widget-actions { border-color: #dce5e0; background: #fff; box-shadow: 0 10px 26px #263c301a; }
+.widget-actions button { border: 0; background: transparent; color: #40544a; }
+.widget-actions button:active:not(:disabled) { background: #e7f3ec; }
+.spotify-widget { border-color: #e0e8e3 !important; background: #fff !important; color: #1d2c26 !important; }
