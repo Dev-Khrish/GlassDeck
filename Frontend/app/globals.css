@@ -198,7 +198,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .footer-center span:first-child { color: #59685f; }
 .footer-center em { color: #287956; }
 .help-button:hover { color: #1e3429; }
-.spotify-widget { border-color: #dfe7e3 !important; background: #fff !important; color: #1d2c26 !important; }
+.spotify-widget { border-color: #2c3a3d !important; background: #0b1018 !important; color: #e9eff6 !important; }
 .widget-surface .panel-heading h2 { font-size: clamp(15px, 1vw, 20px); }
 .widget-surface .micro-label, .widget-surface .stat-caption { font-size: clamp(8px, .55vw, 10px); }
 .widget-surface .mode-grid { gap: clamp(9px, .8vw, 14px); margin-top: clamp(16px, 1.2vw, 24px); }
@@ -224,28 +224,29 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .widget-surface .chat-text, .widget-surface .chat-user { font-size: clamp(10px, .66vw, 13px); }
 .widget-surface .chat-toolbar { font-size: 9px; }
 .widget-surface .chat-composer input { font-size: 12px; }
-.spotify-widget.poster-mode::before, .spotify-widget.poster-mode::after { display: none; }
-.spotify-widget .spotify-heading-copy strong, .spotify-widget .spotify-info h2 { color: #1d2c26; }
-.spotify-widget .spotify-kicker { color: #738179; }
-.spotify-widget .spotify-status-label { border-color: #dce7e1; background: #f4f8f6; color: #52635a; }
-.spotify-widget[data-status="connected"] .spotify-status-label { border-color: #c9e6d5; background: #edf8f1; color: #2f754d; }
-.spotify-widget[data-status="offline"] .spotify-status-label { border-color: #f0ddc5; background: #fff7ec; color: #8a5d29; }
-.spotify-top-actions .spotify-switch { border-color: #e0e8e3; background: #f5f8f6; }
-.spotify-switch button { color: #68776f; }
-.spotify-switch button[aria-pressed=true] { border-color: #d1e7da; background: #e7f3ec; color: #246c4d; box-shadow: none; }
-.spotify-refresh, .spotify-top button, .spotify-lyrics-file { border-color: #dce5e0; background: #f7f9f8; color: #52645a; }
-.spotify-widget .spotify-art { border-color: #e6ece8; box-shadow: 0 12px 30px #223a2d18; }
-.spotify-widget .spotify-lyrics { border-color: #e6ece8; background: #f8faf9; }
-.spotify-widget .spotify-lines p { color: #87938d; }
-.spotify-widget .spotify-lines p[data-current=true] { color: #1d382c; text-shadow: none; }
-.spotify-widget .spotify-info p, .spotify-widget .spotify-info small, .spotify-compact-track small { color: #6f7e75; }
-.spotify-widget .spotify-controls button { border: 1px solid #e1e8e4; background: #f4f7f5; color: #53645b; }
-.spotify-widget .spotify-controls button:nth-child(2) { border-color: #177a5d; background: #177a5d; color: #fff; }
-.spotify-widget .spotify-controls button:disabled { color: #9ba69f; }
-.spotify-widget .spotify-timeline progress { accent-color: #188060; }
-.spotify-widget .spotify-eq i { background: #238865; }
-.spotify-widget .spotify-mini-cover { background: #eef4f0; }
-.spotify-lyric-editor textarea, .spotify-settings select, .touch-settings input, .touch-settings select { border: 1px solid #d9e3dd; border-radius: 6px; background: #fff; color: #20342b; }
+.spotify-widget.poster-mode::before, .spotify-widget.poster-mode::after { display: block; }
+.spotify-widget .spotify-heading-copy strong, .spotify-widget .spotify-info h2 { color: #f0f4f2; }
+.spotify-widget .spotify-kicker { color: #9aa9a5; }
+.spotify-widget .spotify-status-label { border-color: #34443e; background: #131d19; color: #b8dfcc; }
+.spotify-widget[data-status="connected"] .spotify-status-label { border-color: #315b46; background: #14251d; color: #a8e0c2; }
+.spotify-widget[data-status="offline"] .spotify-status-label { border-color: #654a31; background: #211a15; color: #e8bf94; }
+.spotify-top-actions .spotify-switch { border-color: #303a38; background: #101517; }
+.spotify-switch button { color: #a0aca8; }
+.spotify-switch button[aria-pressed=true] { border-color: #46564f; background: #26352f; color: #e6f4ed; box-shadow: 0 2px 9px #0003; }
+.spotify-refresh, .spotify-top button, .spotify-lyrics-file { border-color: #303a38; background: #151b1c; color: #c0ccc7; }
+.spotify-widget .spotify-art { border-color: #ffffff24; box-shadow: 0 18px 48px #0008, 0 0 36px #70d9ae16; }
+.spotify-widget .spotify-lyrics { border-color: #ffffff18; background: linear-gradient(145deg,#ffffff08,#ffffff03); }
+.spotify-widget .spotify-lines p { color: #89969d; }
+.spotify-widget .spotify-lines p[data-current=true] { color: #f3f8fa; text-shadow: 0 0 18px #c8f8e433; }
+.spotify-widget .spotify-info p, .spotify-widget .spotify-info small, .spotify-compact-track small { color: #a3b0ac; }
+.spotify-widget .spotify-controls button { border: 1px solid #2c393a; background: #172021; color: #cfdbd6; }
+.spotify-widget .spotify-controls button:nth-child(2) { border-color: #187a5d; background: #187a5d; color: #fff; }
+.spotify-widget .spotify-controls button:disabled { color: #65726e; }
+.spotify-widget .spotify-timeline progress { accent-color: #48b989; }
+.spotify-widget .spotify-eq i { background: #54c993; }
+.spotify-widget .spotify-mini-cover { background: #15201e; }
+.spotify-lyric-editor textarea, .touch-settings input, .touch-settings select { border: 1px solid #334143; border-radius: 6px; background: #11191b; color: #e9eff6; }
+.spotify-settings select { border: 1px solid #d9e3dd; border-radius: 6px; background: #fff; color: #20342b; }
 @media (max-width: 700px) {
   .device-shell { background: #f8faf9; }
   .screen-panel, .tablet-centre .screen-panel:not(.spotify-widget) { border-radius: 11px; }

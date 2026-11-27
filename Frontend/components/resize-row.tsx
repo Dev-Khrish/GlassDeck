@@ -2,7 +2,7 @@
 import { Children, useEffect, useRef, useState, type ReactNode, type PointerEvent } from 'react'
 type Tile={id:number;at:number;size:number}
 const names=['Scenes','Stream chat','Audio mixer','Spotify']
-const initial:Tile[]=[{id:0,at:0,size:1},{id:3,at:1,size:1},{id:2,at:2,size:1}]
+const initial:Tile[]=[{id:0,at:0,size:1},{id:1,at:1,size:1},{id:2,at:2,size:1}]
 const key='centre-three-slots-v1'
 function valid(v:unknown):v is Tile[]{
   if(!Array.isArray(v)||v.length>3)return false
@@ -43,7 +43,7 @@ function move(list:Tile[],from:Tile,to:Tile){
   return slots.map(t=>{const next={...t,at};at+=t.size;return next}).filter(t=>t.id>=0)
 }
 type Motion={tile:Tile;mode:'move'|'left'|'right';start:number;x:number;y:number;dragged:boolean;pointer:number}
-export function ResizeRow({children,onManage}:{children:ReactNode;onManage:()=>void}){
+export function ResizeRow({children,onManage,onSpotifySettings}:{children:ReactNode;onManage:()=>void;onSpotifySettings:()=>void}){
   const [menu,setMenu]=useState<number|null>(null)
   const picking=useRef(false)
   async function selectAction(button:HTMLButtonElement, action:()=>void){
@@ -60,7 +60,7 @@ export function ResizeRow({children,onManage}:{children:ReactNode;onManage:()=>v
   const [front,raise]=useState<number|null>(null)
   const [stacked,setStacked]=useState(false)
   useEffect(()=>{
-    const breakpoint=window.matchMedia('(max-width: 700px)')
+    const breakpoint=window.matchMedia('(max-width: 700px) and (orientation: portrait)')
     const sync=()=>setStacked(breakpoint.matches)
     sync()
     breakpoint.addEventListener('change',sync)
@@ -158,6 +158,7 @@ export function ResizeRow({children,onManage}:{children:ReactNode;onManage:()=>v
         {[-1,1].map(d=><button key={d} disabled={t.at+d<0||t.at+t.size+d>3} onClick={e=>selectAction(e.currentTarget,()=>{raise(t.id);commit(move(tiles,t,{...t,at:t.at+d}))})}>{d<0?'Move left':'Move right'}</button>)}
         <button onClick={e=>selectAction(e.currentTarget,()=>commit(tiles.filter(w=>w.id!==t.id)))}>Remove widget</button>
         <button onClick={e=>selectAction(e.currentTarget,onManage)}>Manage widgets</button>
+        {t.id===3&&<button onClick={e=>selectAction(e.currentTarget,onSpotifySettings)}>Spotify settings</button>}
         <button onClick={e=>selectAction(e.currentTarget,()=>{})}>Close</button>
       </div>}
       {nodes[t.id]}

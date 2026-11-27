@@ -77,11 +77,11 @@ export function SpotifyWidget(){
   const statusLabel=track?.connected?track.playing?'NOW PLAYING':'PAUSED':error?'LAPTOP OFFLINE':'CONNECTING'
   const statusType=track?.connected?'connected':error?'offline':'connecting'
   const poster=art&&!artFailed?art:'/spotify-fallback-cover.png'
-  const cover=(className:string,decorative=false)=><div className={className}>{art&&!artFailed?<img key={art.slice(-100)} src={art} alt={decorative?'':`Album artwork for ${trackTitle}`} onError={()=>setArtFailed(true)} decoding="async"/>:<img src="/spotify-fallback-cover.png" alt={decorative?'':'Atmospheric album artwork'} decoding="async"/>}</div>
+  const cover=(className:string,decorative=false)=><div className={className}>{art&&!artFailed?<img key={art.slice(-100)} src={art} alt={decorative?'':`Album artwork for ${trackTitle}`} onError={()=>setArtFailed(true)} decoding="async"/>:<img src="/spotify-fallback-cover.png" alt={decorative?'':'Album artwork unavailable'} decoding="async"/>}</div>
   return <section aria-label="Spotify player" data-status={statusType} className={'screen-panel spotify-widget '+(lyrics?'with-lyrics':'poster-mode')} style={{'--spotify-cover':`url("${poster}")`} as CSSProperties}>
     <div className="spotify-top"><div className="spotify-player-heading"><i className="spotify-dot" aria-hidden="true"/><div className="spotify-heading-copy"><span className="spotify-kicker">GLASSDECK AUDIO</span><strong>Spotify</strong></div><span className="spotify-status-label" aria-live="polite">{statusLabel}</span></div><div className="spotify-top-actions"><div className="spotify-switch" role="group" aria-label="Spotify view"><button aria-pressed={lyrics} onClick={()=>toggleLyrics(true)}>Lyrics</button><button aria-pressed={!lyrics} onClick={()=>toggleLyrics(false)}>Music profile</button></div><button className="spotify-refresh" aria-label="Refresh Spotify status" onClick={()=>void refresh()}><RefreshCw /></button></div></div>
     <div className="spotify-compact-track">{cover('spotify-mini-cover',true)}<div><strong>{trackTitle}</strong><small>{artist}</small></div><span aria-hidden="true" className={'spotify-eq'+(track?.playing?' playing':'')}><i/><i/><i/><i/></span></div>
-    <div className="spotify-composition" key={lyrics?'lyrics':'poster'}>
+    <div className="spotify-composition" key={`${lyrics?'lyrics':'poster'}:${song}`}>
       <div className="spotify-player">
         {cover('spotify-art')}
         <div className="spotify-info"><h2>{trackTitle}</h2><p>{artist}</p>{track?.connected&&track.album&&<small>{track.album}</small>}</div>

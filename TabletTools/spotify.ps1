@@ -24,7 +24,7 @@ if($media.Thumbnail){
   $stream=Await-Result ($media.Thumbnail.OpenReadAsync()) $streamType
   if($stream){
    Add-Type -AssemblyName System.Drawing
-   $source=[System.IO.WindowsRuntimeStreamExtensions]::AsStreamForRead([Windows.Storage.Streams.IRandomAccessStream,Windows.Storage.Streams,ContentType=WindowsRuntime]$stream)
+   $source=[System.IO.WindowsRuntimeStreamExtensions]::AsStreamForRead($stream)
    try{
     if($source.Length -gt 8388608){throw "Thumbnail too large"}
     $image=[Drawing.Image]::FromStream($source)
